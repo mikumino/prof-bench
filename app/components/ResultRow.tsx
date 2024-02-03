@@ -5,7 +5,7 @@ interface ResultRowProps {
     category: string;
     headerText: string;
     subtitleText: string;
-    endItem: React.ReactNode;
+    endItem?: React.ReactNode;
     isCompare?: boolean;
 }
 
