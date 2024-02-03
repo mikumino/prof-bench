@@ -19,6 +19,11 @@ export default function Navbar() {
                                 Professors
                             </a>
                         </li>
+                        <li>
+                            <a href ="/recents" className="btn btn-ghost">
+                                Recents
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
