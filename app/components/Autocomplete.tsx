@@ -61,7 +61,7 @@ export default function Autocomplete(props: AutocompleteProps) {
 
     const filterCourses = (searchTerm: string) => {        
         const results = courses.filter(course => 
-            course.name.toLowerCase().startsWith(searchTerm.toLowerCase())
+            (course.name + " " + course.CourseTitle).toLowerCase().includes(searchTerm.toLowerCase())
             ).slice(0, 50);
         setSearchResults(results);
     }
@@ -85,7 +85,7 @@ export default function Autocomplete(props: AutocompleteProps) {
     }
     
     return (
-        <div className='flex flex-col items-center w-[48rem]'>
+        <div className='flex flex-col items-center w-full'>
             <input className="input input-bordered mb-4" placeholder={`Select a ${props.category}`} onChange={handleInputChange}/>
             {
                 props.category === "course" ?

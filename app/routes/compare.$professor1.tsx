@@ -37,7 +37,7 @@ export default function Column() {
                 <div className="flex flex-col w-1/2 m-8 shadow-xl rounded-xl p-8">
                     {professorInfo ? <Stats professor={professorInfo} /> : <h1>Loading...</h1>}
                 </div>
-                {outlet || <Autocomplete category="professor" isCompare />}
+                {outlet || <div className="flex flex-col items-center w-1/2 mt-16"><h1 className="text-3xl font-bold mb-4">Select another professor</h1><Autocomplete category="professor" isCompare /></div>}
             </div>
         </>
         // <h1>lol</h1>
