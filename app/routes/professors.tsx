@@ -1,4 +1,4 @@
-import { MetaFunction } from "@remix-run/node";
+import { HeadersFunction, MetaFunction } from "@remix-run/node";
 import Navbar from "~/components/Navbar";
 import Autocomplete from "~/components/Autocomplete";
 
@@ -8,6 +8,13 @@ export const meta: MetaFunction = () => {
       { name: "description", content: "Compare professors" },
     ];
 };
+
+export const headers: HeadersFunction = () => {
+    return {
+      "Cache-Control": "max-age=604800, stale-while-revalidate=86400",
+    };
+  }
+  
 
 export default function Courses() {
     return (

@@ -1,4 +1,4 @@
-import type { MetaFunction } from "@remix-run/node";
+import type { HeadersFunction, MetaFunction } from "@remix-run/node";
 
 export const meta: MetaFunction = () => {
   return [
@@ -6,6 +6,12 @@ export const meta: MetaFunction = () => {
     { name: "description", content: "Compare professors" },
   ];
 };
+
+export const headers: HeadersFunction = () => {
+  return {
+    "Cache-Control": "max-age=604800, stale-while-revalidate=86400",
+  };
+}
 
 export default function Index() {
   return (

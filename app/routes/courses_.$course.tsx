@@ -1,4 +1,4 @@
-import { LoaderFunctionArgs, json } from "@remix-run/node";
+import { HeadersFunction, LoaderFunctionArgs, json } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import { useEffect, useState } from "react";
 import { getCourseData } from "~/utils/apiUtils";
@@ -10,7 +10,13 @@ export async function loader({
     params,
   }: LoaderFunctionArgs) {
     return json({ course: params.course });
-    }
+}
+
+export const headers: HeadersFunction = () => {
+  return {
+    "Cache-Control": "max-age=604800, stale-while-revalidate=86400",
+  };
+}
 
 export default function Course() {
     const data = useLoaderData<typeof loader>();

@@ -1,4 +1,4 @@
-import { LoaderFunctionArgs, json } from "@remix-run/node";
+import { HeadersFunction, LoaderFunctionArgs, json } from "@remix-run/node";
 import { Link, useLoaderData, MetaFunction } from "@remix-run/react";
 import { getProfessor, getProfessorClasses } from "~/utils/apiUtils";
 import GradeRadial from "~/components/GradeRadial";
@@ -15,6 +15,12 @@ export async function loader({
         lastname: params.professor ? params.professor.split('$')[1] : ''
     });
 }
+
+export const headers: HeadersFunction = () => {
+    return {
+      "Cache-Control": "max-age=604800, stale-while-revalidate=86400",
+    };
+  }
 
 export default function Professor() {
     const [professorInfo, setProfessor] = useState<ProfessorInfo>();
